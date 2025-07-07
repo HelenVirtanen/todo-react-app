@@ -6,19 +6,15 @@ interface Props {
   onToggle: (id: number) => void;
 }
 
-const TodoItem: React.FC<Props> = ({ todo, onToggle }) => {
+const TodoTask: React.FC<Props> = ({ todo, onToggle }) => {
   return (
     <li
+      className={todo.completed ? "todo__task completed" : "todo__task"}
       onClick={() => onToggle(todo.id)}
-      style={{
-        textDecoration: todo.completed ? 'line-through' : 'none',
-        cursor: 'pointer',
-        padding: '8px 0',
-      }}
     >
       {todo.task}
     </li>
   );
 };
 
-export default TodoItem;
+export default TodoTask;
