@@ -5,12 +5,16 @@ import TodoItem from "./components/TodoTask";
 type Filter = "all" | "active" | "completed";
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+  const stored = localStorage.getItem("todos");
+  return stored ? JSON.parse(stored) : [];
+});
   const [isOpen, setIsOpen] = useState(true);
   const [task, setTask] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const listRef = useRef<HTMLUListElement>(null);
   const [height, setHeight] = useState("auto");
+  
 
   const handleAddTodo = () => {
     if (!task.trim()) return;
@@ -49,6 +53,10 @@ const App: React.FC = () => {
     }
   }, [isOpen, filteredTodos.length]);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <div className="todo">
       <h1 className="todo__heading">todos</h1>
@@ -72,11 +80,7 @@ const App: React.FC = () => {
           />
         </div>
 
-        <ul
-          ref={listRef}
-          className="todo-list"
-          style={{ maxHeight: height }}
-        >
+        <ul ref={listRef} className="todo-list" style={{ maxHeight: height }}>
           {filteredTodos.map((todo) => (
             <TodoItem key={todo.id} todo={todo} onToggle={toggleTodo} />
           ))}
