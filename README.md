@@ -1,5 +1,6 @@
 # Todos 📋
 [Репозиторий в GitHub](https://github.com/HelenVirtanen/todo-react-app)
+
 [Посмотреть на GitHub Pages](https://helenvirtanen.github.io/todo-react-app/)
 
  ## 📚 Описание
@@ -51,3 +52,9 @@ npm run test
 ## 📚 Полезные ссылки
 - [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 - [React documentation](https://reactjs.org/).
+
+## 💡 Планы по развитию
+Для улучшения пользовательского опыта и эстетики есть идеи добавить:
+
+1. Переключение темной/светлой тем.
+2. Редактирование и удаление задачи.
