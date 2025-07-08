@@ -87,4 +87,19 @@ describe("Todos", () => {
 
     expect(screen.queryByText("Clean house")).toBeNull();
   });
+
+  test("persists tasks in localStorage after reload", () => {
+    const { unmount } = render(<App />);
+    const input = screen.getByPlaceholderText(/what needs to be done/i);
+    fireEvent.change(input, { target: { value: "Persistent task" } });
+    fireEvent.keyDown(input, { key: "Enter", code: "Enter" });
+
+    expect(screen.getByText("Persistent task")).toBeInTheDocument();
+
+    unmount();
+
+    render(<App />);
+
+    expect(screen.getByText("Persistent task")).toBeInTheDocument();
+  });
 });
