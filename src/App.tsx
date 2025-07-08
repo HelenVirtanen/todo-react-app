@@ -41,6 +41,9 @@ const App: React.FC = () => {
       <h1 className="todo__heading">todos</h1>
       <div className="todo__content">
         <div className={`todo__dropdown ${isOpen ? "open" : ""}`}>
+          <label htmlFor="new-task__input" className="visually-hidden">
+            What needs to be done
+          </label>
           <input
             className="new-task__input"
             value={task}
@@ -57,32 +60,52 @@ const App: React.FC = () => {
             ))}
           </ul>
         )}
-      <div className="footer">
-        <span>
-          {remaining} item{remaining !== 1 ? "s" : ""} left
-        </span>
-        <div className="filters">
-          <button
-            className={`filters__button ${filter === "all" ? "selected" : ""}`}
-            onClick={() => setFilter("all")}
-          >
-            All
-          </button>
-          <button
-            className={`filters__button ${filter === "active" ? "selected" : ""}`}
-            onClick={() => setFilter("active")}
-          >
-            Active
-          </button>
-          <button
-            className={`filters__button ${filter === "completed" ? "selected" : ""}`}
-            onClick={() => setFilter("completed")}
-          >
-            Completed
+        <div className="footer">
+          <span>
+            {remaining} item{remaining !== 1 ? "s" : ""} left
+          </span>
+          <div className="filters">
+            <button
+              type="button"
+              aria-pressed="true"
+              className={`filters__button ${
+                filter === "all" ? "selected" : ""
+              }`}
+              onClick={() => setFilter("all")}
+            >
+              <span className="visually-hidden">Show </span>
+              All
+              <span className="visually-hidden">tasks </span>
+            </button>
+            <button
+              type="button"
+              aria-pressed="false"
+              className={`filters__button ${
+                filter === "active" ? "selected" : ""
+              }`}
+              onClick={() => setFilter("active")}
+            >
+              <span className="visually-hidden">Show </span>
+              Active
+              <span className="visually-hidden">tasks </span>
+            </button>
+            <button
+              type="button"
+              aria-pressed="false"
+              className={`filters__button ${
+                filter === "completed" ? "selected" : ""
+              }`}
+              onClick={() => setFilter("completed")}
+            >
+              <span className="visually-hidden">Show </span>
+              Completed
+              <span className="visually-hidden">tasks </span>
+            </button>
+          </div>
+          <button onClick={clearCompleted} aria-label="Clear completed tasks">
+            Clear completed
           </button>
         </div>
-        <button onClick={clearCompleted} aria-label="Clear completed tasks">Clear Completed</button>
-      </div>
       </div>
     </div>
   );
