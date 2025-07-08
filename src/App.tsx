@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Todo } from "./types";
-import TodoItem from "./components/TodoTask";
+import TodoTask from "./components/TodoTask";
 
 type Filter = "all" | "active" | "completed";
 
@@ -82,7 +82,7 @@ const App: React.FC = () => {
 
         <ul ref={listRef} className="todo-list" style={{ maxHeight: height }}>
           {filteredTodos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} onToggle={toggleTodo} />
+            <TodoTask key={todo.id} todo={todo} onToggle={toggleTodo} />
           ))}
         </ul>
         <div className="footer">
@@ -112,7 +112,7 @@ const App: React.FC = () => {
             >
               <span className="visually-hidden">Show </span>
               Active
-              <span className="visually-hidden">tasks </span>
+              <span className="visually-hidden"> tasks </span>
             </button>
             <button
               type="button"
@@ -124,7 +124,7 @@ const App: React.FC = () => {
             >
               <span className="visually-hidden">Show </span>
               Completed
-              <span className="visually-hidden">tasks </span>
+              <span className="visually-hidden"> tasks </span>
             </button>
           </div>
           <button onClick={clearCompleted} aria-label="Clear completed tasks">
