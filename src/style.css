@@ -38,7 +38,7 @@ body {
   margin: 0 auto 15px;
   color: #e9dad9;
   font-weight: 100;
-  font-size: 110px;
+  font-size: clamp(5.625rem, 5.2679rem + 1.7857vw, 6.875rem);
   line-height: 1em;
   text-align: center;
 }
@@ -156,43 +156,42 @@ body {
   display: flex;
   align-items: center;
   border-block-end: 1px solid #ededed;
-  padding: 20px;
-  padding-inline-start: 11%;
+  padding: 20px 10px;
   font-size: 27px;
+  gap: 20px;
 }
 
 .pseudo-checkbox {
-  position: absolute;
-  top: 25%;
-  left: 1%;
-  display: block;
+  position: relative;
   width: 36px;
   height: 36px;
   border: 2px solid #ccc;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pseudo-checkbox::after {
   content: "";
   position: absolute;
-  top: 15%;
-  left: 37%;
   display: none;
   width: 9px;
   height: 20px;
+  top: 15%;
+  left: 35%;
   border: solid #80c4b4;
   border-width: 0 3px 3px 0;
   transform: rotate(35deg);
 }
 
 .todo__task.completed {
-  border-color: #ccdfdc;
   color: #d9d9d9;
   text-decoration: line-through;
 }
 
 .todo__task.completed .pseudo-checkbox {
-  border-color: #d6e5e2;
+  border-color: #ccdfdc;
 }
 
 .todo__task input[type="checkbox"] {
@@ -214,6 +213,7 @@ body {
   color: #ababab;
   background-color: #fefefe;
   border-block-end: 2px solid #e5e5e5;
+  border-block-start: 1px solid #ededed;
   font-size: 16px;
   position: relative;
   z-index: 3;
@@ -246,3 +246,33 @@ button {
 .filters button.selected {
   border-color: #e9dad9;
 }
+
+
+@media (width <= 480px) {
+  .todo {
+    margin-block-start: 0;
+  }
+
+  .todo__task {
+    font-size: 24px;
+  }
+
+  .pseudo-checkbox {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pseudo-checkbox::after {
+    top: 7%;
+    height: 18px;
+  }
+
+  .footer {
+    gap: 10px
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}
+
