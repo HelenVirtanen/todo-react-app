@@ -6,15 +6,14 @@ type Filter = "all" | "active" | "completed";
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>(() => {
-  const stored = localStorage.getItem("todos");
-  return stored ? JSON.parse(stored) : [];
-});
+    const stored = localStorage.getItem("todos");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [isOpen, setIsOpen] = useState(true);
   const [task, setTask] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const listRef = useRef<HTMLUListElement>(null);
   const [height, setHeight] = useState("auto");
-  
 
   const handleAddTodo = () => {
     if (!task.trim()) return;
