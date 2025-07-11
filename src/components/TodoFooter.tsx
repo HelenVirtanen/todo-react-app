@@ -1,5 +1,5 @@
 import React from "react";
-import { Filter, TodoFooterProps } from "../types";
+import { TodoFooterProps } from "../types";
 import TodoFilter from "./TodoFilter";
 
 const TodoFooter: React.FC<TodoFooterProps> = ({ remaining, filter, setFilter, clearCompleted }) => (

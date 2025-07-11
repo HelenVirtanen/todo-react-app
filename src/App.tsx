@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Task } from "./types";
+import TodoHeading from "./components/TodoHeading";
 import TodoInputToggle from "./components/TodoInputToggle";
 import TodoList from "./components/TodoList";
 import { Filter } from "./types";
@@ -59,7 +60,7 @@ const App: React.FC = () => {
 
   return (
     <div className="todo">
-      <h1 className="todo__heading">todos</h1>
+      <TodoHeading />
       <div className="todo__content">
         <TodoInputToggle
           isOpen={isOpen}
