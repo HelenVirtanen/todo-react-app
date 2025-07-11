@@ -1,33 +1,33 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Task } from "./types";
-import TodoHeading from "./components/TodoHeading";
-import TodoInputToggle from "./components/TodoInputToggle";
-import TodoList from "./components/TodoList";
-import { Filter } from "./types";
-import TodoFooter from "./components/TodoFooter";
+import React, { useState, useRef, useEffect } from 'react';
+import { Task } from './types';
+import TodoHeading from './components/TodoHeading';
+import TodoInputToggle from './components/TodoInputToggle';
+import TodoList from './components/TodoList';
+import { Filter } from './types';
+import TodoFooter from './components/TodoFooter';
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Task[]>(() => {
-    const stored = localStorage.getItem("todos");
+    const stored = localStorage.getItem('todos');
     return stored ? JSON.parse(stored) : [];
   });
   const [isOpen, setIsOpen] = useState(true);
-  const [task, setTask] = useState("");
-  const [filter, setFilter] = useState<Filter>("all");
+  const [task, setTask] = useState('');
+  const [filter, setFilter] = useState<Filter>('all');
   const listRef = useRef<HTMLUListElement>(null);
-  const [height, setHeight] = useState("auto");
+  const [height, setHeight] = useState('auto');
 
   const handleAddTodo = () => {
     if (!task.trim()) return;
     setTodos([...todos, { id: Date.now(), task, completed: false }]);
-    setTask("");
+    setTask('');
   };
 
   const toggleTodo = (id: number) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
     );
   };
 
@@ -36,8 +36,8 @@ const App: React.FC = () => {
   };
 
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
     return true;
   });
 
@@ -49,13 +49,13 @@ const App: React.FC = () => {
         const scrollHeight = listRef.current.scrollHeight;
         setHeight(`${scrollHeight}px`);
       } else {
-        setHeight("0px");
+        setHeight('0px');
       }
     }
   }, [isOpen, filteredTodos.length]);
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
   return (

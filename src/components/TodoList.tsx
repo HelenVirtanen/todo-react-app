@@ -1,6 +1,6 @@
-import React from "react";
-import { TodoListProps } from "../types";
-import TodoTask from "./TodoTask";
+import React from 'react';
+import { TodoListProps } from '../types';
+import TodoTask from './TodoTask';
 
 const TodoList: React.FC<TodoListProps> = ({
   todos,
