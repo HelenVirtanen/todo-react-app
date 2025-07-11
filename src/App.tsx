@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Task } from "./types";
-import TodoTask from "./components/TodoTask";
 import TodoInputToggle from "./components/TodoInputToggle";
+import TodoList from "./components/TodoList";
 import { Filter } from "./types";
-import TodoFilter from "./components/TodoFilter";
+import TodoFooter from "./components/TodoFooter";
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Task[]>(() => {
@@ -68,25 +68,18 @@ const App: React.FC = () => {
           setTask={setTask}
           handleAddTodo={handleAddTodo}
         />
-
-        <ul ref={listRef} className="todo-list" style={{ maxHeight: height }}>
-          {filteredTodos.map((todo) => (
-            <TodoTask
-              key={todo.id}
-              todo={todo}
-              onToggleCompleted={toggleTodo}
-            />
-          ))}
-        </ul>
-        <div className="footer">
-          <span>
-            {remaining} item{remaining !== 1 ? "s" : ""} left
-          </span>
-          <TodoFilter filter={filter} setFilter={setFilter} />
-          <button onClick={clearCompleted} aria-label="Clear completed tasks">
-            Clear completed
-          </button>
-        </div>
+        <TodoList
+          todos={filteredTodos}
+          onToggleCompleted={toggleTodo}
+          listRef={listRef}
+          height={height}
+        />
+        <TodoFooter
+          remaining={remaining}
+          filter={filter}
+          setFilter={setFilter}
+          clearCompleted={clearCompleted}
+        />
       </div>
     </div>
   );
