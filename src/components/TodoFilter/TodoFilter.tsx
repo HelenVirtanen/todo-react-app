@@ -1,13 +1,14 @@
 import React from 'react';
-import { TodoFilterProps } from '../types';
+import { TodoFilterProps } from '../../types';
+import styles from './TodoFilter.module.css';
 
 const TodoFilter: React.FC<TodoFilterProps> = ({ filter, setFilter }) => {
   return (
-    <div className="filters">
+    <div className={styles.filters}>
       <button
         type="button"
         aria-pressed={filter === 'all'}
-        className={`filters__button ${filter === 'all' ? 'selected' : ''}`}
+        className={`${styles.filtersButton} ${filter === 'all' ? styles.selected : ''}`}
         onClick={() => setFilter('all')}
       >
         <span className="visually-hidden">Show </span>
@@ -17,7 +18,7 @@ const TodoFilter: React.FC<TodoFilterProps> = ({ filter, setFilter }) => {
       <button
         type="button"
         aria-pressed={filter === 'active'}
-        className={`filters__button ${filter === 'active' ? 'selected' : ''}`}
+        className={`${styles.filtersButton} ${filter === 'active' ? styles.selected : ''}`}
         onClick={() => setFilter('active')}
       >
         <span className="visually-hidden">Show </span>
@@ -27,7 +28,7 @@ const TodoFilter: React.FC<TodoFilterProps> = ({ filter, setFilter }) => {
       <button
         type="button"
         aria-pressed={filter === 'completed'}
-        className={`filters__button ${filter === 'completed' ? 'selected' : ''}`}
+        className={`${styles.filtersButton} ${filter === 'completed' ? styles.selected : ''}`}
         onClick={() => setFilter('completed')}
       >
         <span className="visually-hidden">Show </span>

@@ -1,0 +1,69 @@
+.todoTask {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-block-end: 1px solid #ededed;
+  padding: 16px 10px;
+  font-size: 27px;
+  gap: 20px;
+}
+
+.pseudoCheckbox {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pseudoCheckbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+  width: 9px;
+  height: 20px;
+  top: 15%;
+  left: 35%;
+  border: solid #80c4b4;
+  border-width: 0 3px 3px 0;
+  transform: rotate(35deg);
+}
+
+.todoTask.completed {
+  color: #d9d9d9;
+  text-decoration: line-through;
+}
+
+.todoTask.completed .pseudoCheckbox {
+  border-color: #ccdfdc;
+}
+
+.todoTask input[type='checkbox'] {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.todoTask.completed .pseudoCheckbox::after {
+  display: block;
+}
+
+@media (width <= 480px) {
+  .todoTask {
+    font-size: 24px;
+  }
+
+  .pseudoCheckbox {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pseudoCheckbox::after {
+    top: 7%;
+    height: 18px;
+  }
+}

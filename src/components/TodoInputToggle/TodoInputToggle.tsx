@@ -1,5 +1,6 @@
 import React from 'react';
-import { TodoInputToggleProps } from '../types';
+import { TodoInputToggleProps } from '../../types';
+import styles from './TodoInputToggle.module.css';
 
 const TodoInputToggle: React.FC<TodoInputToggleProps> = ({
   isOpen,
@@ -9,10 +10,10 @@ const TodoInputToggle: React.FC<TodoInputToggleProps> = ({
   handleAddTodo,
 }) => {
   return (
-    <div className="todo__dropdown">
+    <div className={styles.todoDropdown}>
       <button
         type="button"
-        className={`toggle-arrow ${isOpen ? 'open' : ''}`}
+        className={`${styles.toggleArrow} ${isOpen ? styles.open : ''}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle todo list"
       />
@@ -21,7 +22,7 @@ const TodoInputToggle: React.FC<TodoInputToggleProps> = ({
       </label>
       <input
         id="new-task__input"
-        className="new-task__input"
+        className={styles.newTaskInput}
         value={task}
         onChange={(e) => setTask(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && handleAddTodo()}

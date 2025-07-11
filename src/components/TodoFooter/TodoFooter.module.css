@@ -1,0 +1,19 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  align-items: center;
+  padding: 10px 15px;
+  color: #ababab;
+  background-color: #fefefe;
+  border-block-end: 2px solid #e5e5e5;
+  border-block-start: 1px solid #ededed;
+  font-size: 16px;
+  position: relative;
+  z-index: 3;
+}
+
+@media (width <= 480px) {
+  .footer {
+    gap: 10px;
+  }
+}

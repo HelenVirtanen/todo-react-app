@@ -1,6 +1,7 @@
 import React from 'react';
-import { TodoFooterProps } from '../types';
-import TodoFilter from './TodoFilter';
+import { TodoFooterProps } from '../../types';
+import TodoFilter from '../TodoFilter/TodoFilter';
+import styles from './TodoFooter.module.css';
 
 const TodoFooter: React.FC<TodoFooterProps> = ({
   remaining,
@@ -8,7 +9,7 @@ const TodoFooter: React.FC<TodoFooterProps> = ({
   setFilter,
   clearCompleted,
 }) => (
-  <div className="footer">
+  <div className={styles.footer}>
     <span>
       {remaining} item{remaining !== 1 ? 's' : ''} left
     </span>

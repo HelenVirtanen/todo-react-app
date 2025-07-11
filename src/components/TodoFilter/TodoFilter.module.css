@@ -1,0 +1,22 @@
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+.filtersButton {
+  border: 2px solid transparent;
+  border-radius: 3px;
+  padding: 3px 7px;
+  background: none;
+  cursor: pointer;
+}
+
+.filters button.selected {
+  border-color: #e9dad9;
+}
+
+@media (width <= 480px) {
+  .filters {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,9 @@
+.todoHeading {
+  width: 100%;
+  margin: 0 auto 15px;
+  color: #e9dad9;
+  font-weight: 100;
+  font-size: clamp(5.625rem, 5.2679rem + 1.7857vw, 6.875rem);
+  line-height: 1em;
+  text-align: center;
+}

@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Task } from './types';
-import TodoHeading from './components/TodoHeading';
-import TodoInputToggle from './components/TodoInputToggle';
-import TodoList from './components/TodoList';
-import { Filter } from './types';
-import TodoFooter from './components/TodoFooter';
+import TodoHeading from './components/TodoHeading/TodoHeading';
+import TodoInputToggle from './components/TodoInputToggle/TodoInputToggle';
+import TodoList from './components/TodoList/TodoList';
+import { Filter } from '../src/types';
+import TodoFooter from './components/TodoFooter/TodoFooter';
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Task[]>(() => {

@@ -1,0 +1,65 @@
+.todoDropdown {
+  position: relative;
+  display: flex;
+  border-block-end: 2px solid #efefef;
+  z-index: 3;
+}
+
+.toggleArrow {
+  position: absolute;
+  top: 37%;
+  left: 3%;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toggleArrow::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 13px;
+  height: 13px;
+  border: solid #e6e6e6;
+  border-width: 0 4px 4px 0;
+  padding: 3px;
+  transform: rotate(-135deg);
+  transition: transform 0.2s ease;
+}
+
+.toggleArrow.open::before {
+  transform: rotate(45deg);
+}
+
+.newTaskInput {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  padding: 24px;
+  padding-inline-start: 11%;
+  color: #4d4d4d;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.newTaskInput:focus {
+  outline: none;
+}
+
+.newTaskInput:focus-visible {
+  outline: 2px solid #e9dad9;
+}
+
+.newTaskInput::placeholder {
+  opacity: 1;
+  color: #e8e8e8;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  font-size: 28px;
+  font-style: italic;
+  word-spacing: 3px;
+}

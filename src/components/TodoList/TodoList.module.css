@@ -1,0 +1,10 @@
+.todoList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: max-height 0.2s linear;
+  overflow: hidden;
+  position: relative;
+  background-color: #fefefe;
+  z-index: 3;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { TodoListProps } from '../types';
-import TodoTask from './TodoTask';
+import { TodoListProps } from '../../types';
+import TodoTask from '../TodoTask/TodoTask';
+import styles from './TodoList.module.css';
 
 const TodoList: React.FC<TodoListProps> = ({
   todos,
@@ -8,7 +9,7 @@ const TodoList: React.FC<TodoListProps> = ({
   listRef,
   height,
 }) => (
-  <ul ref={listRef} className="todo-list" style={{ maxHeight: height }}>
+  <ul ref={listRef} className={styles.todoList} style={{ maxHeight: height }}>
     {todos.map((todo) => (
       <TodoTask
         key={todo.id}
