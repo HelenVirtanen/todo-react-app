@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Task } from "./types";
 import TodoTask from "./components/TodoTask";
 import TodoInputToggle from "./components/TodoInputToggle";
-
-type Filter = "all" | "active" | "completed";
+import { Filter } from "./types";
+import TodoFilter from "./components/TodoFilter";
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Task[]>(() => {
@@ -82,44 +82,7 @@ const App: React.FC = () => {
           <span>
             {remaining} item{remaining !== 1 ? "s" : ""} left
           </span>
-          <div className="filters">
-            <button
-              type="button"
-              aria-pressed={filter === "all"}
-              className={`filters__button ${
-                filter === "all" ? "selected" : ""
-              }`}
-              onClick={() => setFilter("all")}
-            >
-              <span className="visually-hidden">Show </span>
-              All
-              <span className="visually-hidden">tasks </span>
-            </button>
-            <button
-              type="button"
-              aria-pressed={filter === "active"}
-              className={`filters__button ${
-                filter === "active" ? "selected" : ""
-              }`}
-              onClick={() => setFilter("active")}
-            >
-              <span className="visually-hidden">Show </span>
-              Active
-              <span className="visually-hidden"> tasks </span>
-            </button>
-            <button
-              type="button"
-              aria-pressed={filter === "completed"}
-              className={`filters__button ${
-                filter === "completed" ? "selected" : ""
-              }`}
-              onClick={() => setFilter("completed")}
-            >
-              <span className="visually-hidden">Show </span>
-              Completed
-              <span className="visually-hidden"> tasks </span>
-            </button>
-          </div>
+          <TodoFilter filter={filter} setFilter={setFilter} />
           <button onClick={clearCompleted} aria-label="Clear completed tasks">
             Clear completed
           </button>

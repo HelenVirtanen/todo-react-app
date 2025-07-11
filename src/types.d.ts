@@ -16,3 +16,10 @@ export interface TodoInputToggleProps {
   setTask: React.Dispatch<React.SetStateAction<string>>;
   handleAddTodo: () => void;
 }
+
+export type Filter = "all" | "active" | "completed";
+
+export interface TodoFilterProps {
+  filter: Filter;
+  setFilter: (filter: Filter) => void;
+}
