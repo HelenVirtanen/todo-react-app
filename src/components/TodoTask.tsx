@@ -1,16 +1,11 @@
 import React from "react";
-import { Todo } from "../types";
+import { TodoTaskProps } from "../types";
 
-interface Props {
-  todo: Todo;
-  onToggle: (id: number) => void;
-}
-
-const TodoTask: React.FC<Props> = ({ todo, onToggle }) => {
+const TodoTask: React.FC<TodoTaskProps> = ({ todo, onToggleCompleted }) => {
   return (
     <li
       className={todo.completed ? "todo__task completed" : "todo__task"}
-      onClick={() => onToggle(todo.id)}
+      onClick={() => onToggleCompleted(todo.id)}
     >
       <input className="visually-hidden" type="checkbox"></input>
       <span className="pseudo-checkbox"></span>

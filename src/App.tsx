@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Todo } from "./types";
+import { Task } from "./types";
 import TodoTask from "./components/TodoTask";
 
 type Filter = "all" | "active" | "completed";
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>(() => {
+  const [todos, setTodos] = useState<Task[]>(() => {
     const stored = localStorage.getItem("todos");
     return stored ? JSON.parse(stored) : [];
   });
@@ -81,7 +81,7 @@ const App: React.FC = () => {
 
         <ul ref={listRef} className="todo-list" style={{ maxHeight: height }}>
           {filteredTodos.map((todo) => (
-            <TodoTask key={todo.id} todo={todo} onToggle={toggleTodo} />
+            <TodoTask key={todo.id} todo={todo} onToggleCompleted={toggleTodo} />
           ))}
         </ul>
         <div className="footer">
